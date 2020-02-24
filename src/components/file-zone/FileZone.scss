@@ -1,0 +1,21 @@
+#file-zone {
+    background-color:#f1f0f0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+#file {
+    width: 600px;
+    flex-grow: 1;
+    background-color: #fff;
+    border: 1px solid #e4dede;
+    min-height: 50px;  /* if you want Flexible textarea/div then give min-height instead of height */
+    overflow: auto;
+    padding: 2px;
+    resize: both;
+    font-size:15px;
+    color:#000;
+}

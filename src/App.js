@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+import ControlPanel from "./components/control-panel/ControlPanel.jsx";
+import FileZone from "./components/file-zone/FileZone.jsx";
+import getMockText from './text.service';
+import Synonims from "./components/synonims/Synonims";
+
+const App = () => {
+  const [text, setText] = useState('');
+  
+  const getText = () => {
+    getMockText().then(function (result) {
+      console.log(result);
+      setText(result);
+    });
+  };
+  
+  useEffect(() => {
+    getText();
+  }, [])
+  
+    return (
+      <div className="App">
+        <header>
+          <span>Simple Text Editor</span>
+        </header>
+        <main>
+          <ControlPanel/>
+          <FileZone mockText={text}/>
+          <Synonims/>
+        </main>
+      </div>
+    );
+};
 
 export default App;
