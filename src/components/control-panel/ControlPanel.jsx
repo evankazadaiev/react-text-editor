@@ -32,15 +32,20 @@ const ControlPanel = () => {
   };
   
   useEffect(() => {
-    // document.onselectionchange = () => {
-    //   if(document.queryCommandState('bold')) {
-    //     setButtonStyles({ ...buttonStyles, bold: !bold });
-    //   } else if(document.queryCommandState('italic')) {
-    //     setButtonStyles({ ...buttonStyles, italic: !italic });
-    //   } else if(document.queryCommandState('underline')) {
-    //     setButtonStyles({ ...buttonStyles, underline: !underline });
-    //   }
-    // };
+    document.onselectionchange = () => {
+      const selection = document.getSelection();
+      if(selection.isCollapsed) {
+        setButtonStyles({ italic: false, underline: false, bold: false });
+      }
+      
+      if(document.queryCommandState('bold')) {
+        setButtonStyles({ italic: false, underline: false, bold: true });
+      } else if(document.queryCommandState('italic')) {
+        setButtonStyles({ underline: false, bold: false, italic: true });
+      } else if(document.queryCommandState('underline')) {
+        setButtonStyles({ italic: false, bold: false, underline: true });
+      }
+    };
   }, []);
 
   return (

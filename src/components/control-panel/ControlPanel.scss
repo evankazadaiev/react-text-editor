@@ -1,12 +1,18 @@
 #control-panel {
     background-color: #fff;
-    height: 25px;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 5px;
     .active {
-        font-weight: 900;
+        background-color: #93cdff;
+    }
+    .format-action {
+        padding: 5px 12px;
+        outline: none;
+        cursor: pointer;
+        border: 0.5px solid #ffa500;
+        margin: 0 0.5px;
     }
 }
 #format-actions {
